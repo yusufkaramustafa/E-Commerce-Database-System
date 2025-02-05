@@ -1,0 +1,40 @@
+Create a new product
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "Wireless Earbuds"
+        description:
+          type: string
+          example: "Description!!!!"
+        rating:
+          type: number
+          format: float
+          example: 4
+responses:
+  201:
+    description: Product created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product created"
+  400:
+    description: Bad request
+  403:
+    description: Forbidden (Admins only)
+  500:
+    description: Internal server error

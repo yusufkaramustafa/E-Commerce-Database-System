@@ -1,0 +1,62 @@
+Update payment details (Admin only)
+---
+tags:
+  - Payments
+security:
+  - Bearer: []
+parameters:
+  - name: payment_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the payment to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        amount_paid:
+          type: number
+          format: float
+          example: 199.99
+        payment_method:
+          type: string
+          example: "Credit Card"
+responses:
+  200:
+    description: Payment updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Payment updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one field (amount_paid or payment_method) must be provided"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Payment not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Payment not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

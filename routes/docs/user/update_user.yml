@@ -1,0 +1,70 @@
+Update user information
+---
+tags:
+  - Users
+security:
+  - Bearer: []
+parameters:
+  - name: user_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the user to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "New Name"
+        email:
+          type: string
+          example: "new.email@example.com"
+        phone_number:
+          type: string
+          example: "+123456789"
+        password:
+          type: string
+          example: "NewPassword123!"
+        role:
+          type: string
+          example: "user"
+responses:
+  200:
+    description: User updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "User updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one field must be provided"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only update your own information"
+  404:
+    description: User not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "User not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

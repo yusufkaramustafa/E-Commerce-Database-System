@@ -1,0 +1,39 @@
+Delete a review
+---
+tags:
+  - Reviews
+security:
+  - Bearer: []
+parameters:
+  - name: review_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the review to delete
+responses:
+  200:
+    description: Review deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review deleted successfully"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only delete your own reviews"
+  404:
+    description: Review not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review not found"
+  401:
+    description: Unauthorized

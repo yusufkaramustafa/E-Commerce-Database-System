@@ -1,0 +1,168 @@
+swagger: "2.0"
+info:
+  title: "E-Commerce API"
+  description: "Swagger API documentation for the E-Commerce platform"
+  version: "1.0.0"
+basePath: "/"
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'Enter your JWT using the Bearer prefix. Example input: "Bearer {token}"'
+security:
+  - Bearer: []
+definitions:
+  User:
+    type: object
+    properties:
+      user_id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "John Johnson"
+      email:
+        type: string
+        example: "John.johnson@example.com"
+      phone_number:
+        type: string
+        example: "+1234567890"
+      role:
+        type: string
+        example: "user"
+  Product:
+    type: object
+    properties:
+      product_id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Wireless Headphones"
+      description:
+        type: string
+        example: "Description!!!"
+      rating:
+        type: number
+        format: float
+        example: 4
+  Order:
+    type: object
+    properties:
+      order_id:
+        type: integer
+        example: 1
+      user_id:
+        type: integer
+        example: 1
+      product_manufacturer_id:
+        type: integer
+        example: 1
+      order_date:
+        type: string
+        format: date-time
+        example: "2023-10-10T14:00:00Z"
+      order_quantity:
+        type: integer
+        example: 2
+  Manufacturer:
+    type: object
+    properties:
+      manufacturer_id:
+        type: integer
+        example: 1
+      name:
+        type: string
+        example: "Sound LTD."
+      rating:
+        type: number
+        format: float
+        example: 4.5
+  ProductManufacturer:
+    type: object
+    properties:
+      product_manufacturer_id:
+        type: integer
+        example: 1
+      product_id:
+        type: integer
+        example: 1
+      product_name:
+        type: string
+        example: "Wireless Headphones"
+      manufacturer_id:
+        type: integer
+        example: 1
+      manufacturer_name:
+        type: string
+        example: "Sound LTD."
+      price:
+        type: number
+        format: float
+        example: 199.99
+      stock:
+        type: integer
+        example: 50
+  Address:
+    type: object
+    properties:
+      address_id:
+        type: integer
+        example: 1
+      country:
+        type: string
+        example: "Turkey"
+      city:
+        type: string
+        example: "Istanbul"
+      zip_code:
+        type: string
+        example: "34000"
+      address_line:
+        type: string
+        example: "ITU Maslak"
+  Payment:
+    type: object
+    properties:
+      payment_id:
+        type: integer
+        example: 1
+      order_id:
+        type: integer
+        example: 1
+      payment_date:
+        type: string
+        format: date-time
+        example: "2024-12-15T10:00:00Z"
+      amount_paid:
+        type: number
+        format: float
+        example: 199.99
+      payment_method:
+        type: string
+        example: "Credit Card"
+
+  Shipping:
+    type: object
+    properties:
+      shipping_id:
+        type: integer
+        example: 1
+      order_id:
+        type: integer
+        example: 1
+      address_id:
+        type: integer
+        example: 2
+      shipping_date:
+        type: string
+        format: date-time
+        example: "2024-12-15T10:00:00Z"
+      estimated_delivery:
+        type: string
+        format: date-time
+        example: "2024-12-20T18:00:00Z"
+      status:
+        type: string
+        example: "Shipped"

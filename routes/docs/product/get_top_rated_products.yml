@@ -1,0 +1,24 @@
+Get top-rated products
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of top-rated products
+    schema:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Wireless Headphones"
+        average_rating:
+          type: number
+          format: float
+          example: 4.7
+  401:
+    description: Unauthorized

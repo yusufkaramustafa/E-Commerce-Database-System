@@ -1,0 +1,15 @@
+Get all manufacturers
+---
+tags:
+  - Manufacturers
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of all manufacturers
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Manufacturer'
+  401:
+    description: Unauthorized

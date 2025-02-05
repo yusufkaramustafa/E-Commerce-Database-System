@@ -1,0 +1,51 @@
+Create a new address
+---
+tags:
+  - Addresses
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - country
+        - city
+        - zip_code
+        - address_line
+      properties:
+        country:
+          type: string
+          example: "Turkey"
+        city:
+          type: string
+          example: "Istanbul"
+        zip_code:
+          type: string
+          example: "34000"
+        address_line:
+          type: string
+          example: "ITU Maslak"
+responses:
+  201:
+    description: Address added successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Address added successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "All address fields are required"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

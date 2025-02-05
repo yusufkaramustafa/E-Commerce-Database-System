@@ -1,0 +1,58 @@
+Update an order's status
+---
+tags:
+  - Orders
+security:
+  - Bearer: []
+parameters:
+  - name: order_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the order to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          example: "Cancelled"
+responses:
+  200:
+    description: Order status updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Order status updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cannot cancel the order at this stage"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Order not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Order not found"
+  500:
+    description: Internal server error

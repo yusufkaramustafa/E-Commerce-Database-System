@@ -1,0 +1,27 @@
+Get a manufacturer by ID
+---
+tags:
+  - Manufacturers
+security:
+  - Bearer: []
+parameters:
+  - name: manufacturer_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the manufacturer to retrieve
+responses:
+  200:
+    description: Manufacturer found
+    schema:
+      $ref: '#/definitions/Manufacturer'
+  404:
+    description: Manufacturer not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Manufacturer not found"
+  401:
+    description: Unauthorized

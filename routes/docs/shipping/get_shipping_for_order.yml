@@ -1,0 +1,70 @@
+Get shipping details for an order
+---
+tags:
+  - Shipping
+security:
+  - Bearer: []
+parameters:
+  - name: order_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the order to get shipping details for
+responses:
+  200:
+    description: Shipping details retrieved successfully
+    schema:
+      type: object
+      properties:
+        shipping_id:
+          type: integer
+          example: 1
+        order_id:
+          type: integer
+          example: 1
+        address_id:
+          type: integer
+          example: 2
+        country:
+          type: string
+          example: "Turkey"
+        city:
+          type: string
+          example: "Istanbul"
+        zip_code:
+          type: string
+          example: "3400"
+        address_line:
+          type: string
+          example: "ITU Maslak"
+        shipping_date:
+          type: string
+          format: date-time
+          example: "2024-12-15T10:00:00Z"
+        estimated_delivery:
+          type: string
+          format: date-time
+          example: "2024-12-20T18:00:00Z"
+        status:
+          type: string
+          example: "Shipped"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only view shipping details for your own orders"
+  404:
+    description: Shipping details not found for this order
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping details not found for this order"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

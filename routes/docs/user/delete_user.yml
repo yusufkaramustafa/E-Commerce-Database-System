@@ -1,0 +1,31 @@
+Delete a user
+---
+tags:
+  - Users
+security:
+  - Bearer: []
+parameters:
+  - name: user_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the user to delete
+responses:
+  200:
+    description: User deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "User deleted successfully."
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  401:
+    description: Unauthorized

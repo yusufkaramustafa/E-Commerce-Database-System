@@ -1,0 +1,31 @@
+Delete a product
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+parameters:
+  - name: product_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the product to delete
+responses:
+  200:
+    description: Product deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product deleted successfully."
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  401:
+    description: Unauthorized

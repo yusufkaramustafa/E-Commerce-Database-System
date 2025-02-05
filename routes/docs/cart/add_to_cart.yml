@@ -1,0 +1,50 @@
+Add an item to the cart
+---
+tags:
+  - Cart
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - product_manufacturer_id
+      properties:
+        product_manufacturer_id:
+          type: integer
+          example: 1
+        quantity:
+          type: integer
+          example: 2
+responses:
+  201:
+    description: Item added to cart successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Item added to cart successfully"
+  400:
+    description: Invalid input or insufficient stock
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Invalid product_manufacturer_id or quantity"
+  404:
+    description: ProductManufacturer not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "ProductManufacturer not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

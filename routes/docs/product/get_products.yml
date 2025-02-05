@@ -1,0 +1,15 @@
+Get all products
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of all products
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/Product'
+  401:
+    description: Unauthorized

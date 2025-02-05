@@ -1,0 +1,27 @@
+Get a product-manufacturer association by ID
+---
+tags:
+  - ProductManufacturer
+security:
+  - Bearer: []
+parameters:
+  - name: pm_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the product-manufacturer association to retrieve
+responses:
+  200:
+    description: Product-manufacturer association found
+    schema:
+      $ref: '#/definitions/ProductManufacturer'
+  404:
+    description: ProductManufacturer entry not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "ProductManufacturer entry not found"
+  401:
+    description: Unauthorized

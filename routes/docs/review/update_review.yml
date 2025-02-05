@@ -1,0 +1,59 @@
+Update a review
+---
+tags:
+  - Reviews
+security:
+  - Bearer: []
+parameters:
+  - name: review_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the review to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        rating:
+          type: number
+          example: 4
+        review_text:
+          type: string
+          example: "Updated review text"
+responses:
+  200:
+    description: Review updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one of rating or review_text must be provided"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only update your own reviews"
+  404:
+    description: Review not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review not found"
+  401:
+    description: Unauthorized

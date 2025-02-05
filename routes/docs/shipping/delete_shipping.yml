@@ -1,0 +1,41 @@
+Delete a shipping record
+---
+tags:
+  - Shipping
+security:
+  - Bearer: []
+parameters:
+  - name: shipping_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the shipping record to delete
+responses:
+  200:
+    description: Shipping record deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping record deleted successfully"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Shipping record not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping record not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

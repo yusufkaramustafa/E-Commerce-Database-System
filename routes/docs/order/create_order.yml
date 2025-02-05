@@ -1,0 +1,51 @@
+Create a new order
+---
+tags:
+  - Orders
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - product_manufacturer_id
+        - order_quantity
+      properties:
+        product_manufacturer_id:
+          type: integer
+          example: 3
+        order_quantity:
+          type: integer
+          example: 2
+responses:
+  201:
+    description: Order created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Order created successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "product_manufacturer_id and order_quantity are required"
+  401:
+    description: Unauthorized
+  404:
+    description: ProductManufacturer not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "ProductManufacturer not found"
+  500:
+    description: Internal server error

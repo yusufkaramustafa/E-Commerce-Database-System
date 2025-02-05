@@ -1,0 +1,59 @@
+Update an address
+---
+tags:
+  - Addresses
+security:
+  - Bearer: []
+parameters:
+  - name: address_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the address to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        country:
+          type: string
+          example: "Turkey"
+        city:
+          type: string
+          example: "Istanbul"
+        zip_code:
+          type: string
+          example: "34000"
+        address_line:
+          type: string
+          example: "ITU Maslak Campus"
+responses:
+  200:
+    description: Address updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Address updated successfully"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only update your own addresses"
+  404:
+    description: Address not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Address not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

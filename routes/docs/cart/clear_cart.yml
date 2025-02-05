@@ -1,0 +1,19 @@
+Clear all items from the cart
+---
+tags:
+  - Cart
+security:
+  - Bearer: []
+responses:
+  200:
+    description: Cart cleared successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cart cleared successfully"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

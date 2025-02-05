@@ -1,0 +1,15 @@
+Get all product-manufacturer associations
+---
+tags:
+  - ProductManufacturer
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of product-manufacturer associations
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/ProductManufacturer'
+  401:
+    description: Unauthorized

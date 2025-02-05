@@ -1,0 +1,23 @@
+Get all users
+---
+tags:
+  - Users
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of all users
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/User'
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  401:
+    description: Unauthorized

@@ -1,0 +1,51 @@
+Create a new manufacturer
+---
+tags:
+  - Manufacturers
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          example: "Sound LTD."
+        rating:
+          type: number
+          format: float
+          example: 4.5
+responses:
+  201:
+    description: Manufacturer created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Manufacturer created successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Manufacturer name is required"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

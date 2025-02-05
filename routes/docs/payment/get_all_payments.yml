@@ -1,0 +1,49 @@
+Get all payments (Admin only)
+---
+tags:
+  - Payments
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of all payments
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          payment_id:
+            type: integer
+            example: 1
+          order_id:
+            type: integer
+            example: 1
+          user_id:
+            type: integer
+            example: 2
+          user_name:
+            type: string
+            example: "John Johnson"
+          payment_date:
+            type: string
+            format: date-time
+            example: "2024-12-15T10:00:00Z"
+          amount_paid:
+            type: number
+            format: float
+            example: 199.99
+          payment_method:
+            type: string
+            example: "Credit Card"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

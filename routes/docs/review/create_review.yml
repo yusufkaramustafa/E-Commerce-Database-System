@@ -1,0 +1,53 @@
+Create a new review
+---
+tags:
+  - Reviews
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - product_id
+        - rating
+      properties:
+        product_id:
+          type: integer
+          example: 1
+        rating:
+          type: number
+          format: float
+          example: 4.5
+        review_text:
+          type: string
+          example: "Great product!"
+responses:
+  201:
+    description: Review created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review created successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "product_id and rating are required"
+  401:
+    description: Unauthorized
+  404:
+    description: Product not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product not found"

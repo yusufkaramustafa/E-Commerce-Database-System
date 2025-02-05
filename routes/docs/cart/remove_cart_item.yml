@@ -1,0 +1,33 @@
+Remove an item from the cart
+---
+tags:
+  - Cart
+security:
+  - Bearer: []
+parameters:
+  - name: cart_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the cart item to remove
+responses:
+  200:
+    description: Cart item removed successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cart item removed successfully"
+  404:
+    description: Cart item not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cart item not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

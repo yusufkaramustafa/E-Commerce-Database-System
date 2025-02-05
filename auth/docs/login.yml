@@ -1,0 +1,45 @@
+User login
+---
+tags:
+  - Authentication
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          example: "John.johnson@example.com"
+        password:
+          type: string
+          example: "password!"
+responses:
+  200:
+    description: Login successful
+    schema:
+      type: object
+      properties:
+        token:
+          type: string
+          example: "eyJ0eXAiOiJKV1QiLCJhbGciO..."
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Email and password are required."
+  401:
+    description: Invalid credentials
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Invalid credentials."

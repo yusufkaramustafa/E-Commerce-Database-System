@@ -1,0 +1,62 @@
+Update a product-manufacturer association
+---
+tags:
+  - ProductManufacturer
+security:
+  - Bearer: []
+parameters:
+  - name: pm_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the product-manufacturer association to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        price:
+          type: number
+          format: float
+          example: 199.99
+        stock:
+          type: integer
+          example: 50
+responses:
+  200:
+    description: ProductManufacturer entry updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "ProductManufacturer entry updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one of price or stock must be provided"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: ProductManufacturer entry not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "ProductManufacturer entry not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

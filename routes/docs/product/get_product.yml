@@ -1,0 +1,27 @@
+Get a product by ID
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+parameters:
+  - name: product_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the product to retrieve
+responses:
+  200:
+    description: Product found
+    schema:
+      $ref: '#/definitions/Product'
+  404:
+    description: Product not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product not found"
+  401:
+    description: Unauthorized

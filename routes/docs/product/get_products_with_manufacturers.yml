@@ -1,0 +1,33 @@
+Get products with manufacturers
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+responses:
+  200:
+    description: A list of products with their manufacturers, prices, and stock
+    schema:
+      type: object
+      properties:
+        product_id:
+          type: integer
+          example: 1
+        product_name:
+          type: string
+          example: "Wireless Headphones"
+        manufacturer_id:
+          type: integer
+          example: 1
+        manufacturer_name:
+          type: string
+          example: "Sound Ltd."
+        price:
+          type: number
+          format: float
+          example: 199.99
+        stock:
+          type: integer
+          example: 50
+  401:
+    description: Unauthorized

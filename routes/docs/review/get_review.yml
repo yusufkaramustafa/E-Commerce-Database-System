@@ -1,0 +1,54 @@
+Get a review by ID
+---
+tags:
+  - Reviews
+security:
+  - Bearer: []
+parameters:
+  - name: review_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the review to retrieve
+responses:
+  200:
+    description: Review found
+    schema:
+      type: object
+      properties:
+        review_id:
+          type: integer
+          example: 1
+        user_id:
+          type: integer
+          example: 2
+        user_name:
+          type: string
+          example: "John Johnson"
+        product_id:
+          type: integer
+          example: 1
+        product_name:
+          type: string
+          example: "Wireless Headphones"
+        rating:
+          type: number
+          format: float
+          example: 4.5
+        review_text:
+          type: string
+          example: "Great product!"
+        review_date:
+          type: string
+          format: date-time
+          example: "2024-12-15T10:00:00Z"
+  404:
+    description: Review not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Review not found"
+  401:
+    description: Unauthorized

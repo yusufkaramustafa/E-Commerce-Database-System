@@ -1,0 +1,65 @@
+Update an existing product
+---
+tags:
+  - Products
+security:
+  - Bearer: []
+parameters:
+  - name: product_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the product to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "New Product Name"
+        description:
+          type: string
+          example: "Updated product description"
+        rating:
+          type: number
+          format: float
+          example: 4.0
+responses:
+  200:
+    description: Product updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one field (name, description, or rating) must be provided"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Product not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

@@ -1,0 +1,49 @@
+Delete an address
+---
+tags:
+  - Addresses
+security:
+  - Bearer: []
+parameters:
+  - name: address_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the address to delete
+responses:
+  200:
+    description: Address deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Address deleted successfully"
+  400:
+    description: Cannot delete address associated with shipping records
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cannot delete address associated with shipping records"
+  403:
+    description: Forbidden
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "You can only delete your own addresses"
+  404:
+    description: Address not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Address not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

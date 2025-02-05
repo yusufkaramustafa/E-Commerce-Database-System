@@ -1,0 +1,49 @@
+Delete a manufacturer
+---
+tags:
+  - Manufacturers
+security:
+  - Bearer: []
+parameters:
+  - name: manufacturer_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the manufacturer to delete
+responses:
+  200:
+    description: Manufacturer deleted successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Manufacturer deleted successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Cannot delete manufacturer associated with products"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Manufacturer not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Manufacturer not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

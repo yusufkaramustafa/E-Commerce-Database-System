@@ -1,0 +1,70 @@
+Create a new shipping record
+---
+tags:
+  - Shipping
+security:
+  - Bearer: []
+parameters:
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      required:
+        - order_id
+        - address_id
+      properties:
+        order_id:
+          type: integer
+          example: 1
+        address_id:
+          type: integer
+          example: 2
+        shipping_date:
+          type: string
+          format: date-time
+          example: "2024-12-15T10:00:00Z"
+        estimated_delivery:
+          type: string
+          format: date-time
+          example: "2024-12-20T18:00:00Z"
+        status:
+          type: string
+          example: "Pending"
+responses:
+  201:
+    description: Shipping record created successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping record created successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "order_id and address_id are required"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Order or Address not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Order not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error

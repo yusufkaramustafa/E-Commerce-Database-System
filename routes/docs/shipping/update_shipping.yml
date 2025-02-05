@@ -1,0 +1,66 @@
+Update a shipping record
+---
+tags:
+  - Shipping
+security:
+  - Bearer: []
+parameters:
+  - name: shipping_id
+    in: path
+    type: integer
+    required: true
+    description: ID of the shipping record to update
+  - in: body
+    name: body
+    required: true
+    schema:
+      type: object
+      properties:
+        shipping_date:
+          type: string
+          format: date-time
+          example: "2024-12-15T10:00:00Z"
+        estimated_delivery:
+          type: string
+          format: date-time
+          example: "2024-12-20T18:00:00Z"
+        status:
+          type: string
+          example: "Shipped"
+responses:
+  200:
+    description: Shipping record updated successfully
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping record updated successfully"
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "At least one field (shipping_date, estimated_delivery, or status) must be provided"
+  403:
+    description: Forbidden (Admins only)
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Admins only!"
+  404:
+    description: Shipping record not found
+    schema:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Shipping record not found"
+  401:
+    description: Unauthorized
+  500:
+    description: Internal server error
